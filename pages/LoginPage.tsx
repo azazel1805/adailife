@@ -26,35 +26,18 @@ const LoginPage: React.FC = () => {
       <div className="w-full max-w-md text-center">
         <div className="mb-8">
             <div className="inline-block p-4 bg-slate-900 rounded-2xl shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Black rounded background -->
-  <rect width="100" height="100" rx="20" fill="black"/>
-  
-  <!-- Definition for the glowing gradient -->
-  <defs>
-    <radialGradient id="glow-gradient" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#e9d5ff" />
-      <stop offset="75%" stop-color="#a78bfa" />
-      <stop offset="100%" stop-color="#7c3aed" />
-    </radialGradient>
-  </defs>
-  
-  <!-- The text "ADAI", perfectly centered and kerned -->
-  <text x="50%" y="64%" 
-        dominant-baseline="middle" 
-        text-anchor="middle" 
-        font-family="sans-serif" 
-        font-size="40" 
-        font-weight="bold">
-          
-    <!-- "ADA" part is solid white -->
-    <tspan fill="#FFFFFF">ADA</tspan>
-    
-    <!-- "I" part is pulled closer to the "A" with the dx attribute -->
-    <tspan fill="url(#glow-gradient)" dx="-0.26em">I</tspan>
-    
-  </text>
-</svg>
+                <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="20" fill="black"/>
+                    <g transform="translate(25 23)">
+                        <path d="M34.3,47.1H15.7L0,0h11.2l9.4,31.4L30,0h11.2L34.3,47.1z M49.9,47.1V0H58v47.1H49.9z" fill="url(#g)"/>
+                    </g>
+                    <defs>
+                        <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+                            <stop stopColor="#a78bfa"/>
+                            <stop offset="1" stopColor="#7c3aed"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
             </div>
             <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-50 tracking-tight mt-4">Welcome to ADAI</h1>
             <p className="text-slate-500 dark:text-slate-400">Your AI-Powered Language Assistant</p>
