@@ -35,6 +35,7 @@ import PragmaticAnalysisTool from '../pages/PragmaticAnalysisTool';
 import VisualDictionary from '../pages/VisualDictionary';
 import Basics from '../pages/Basics';
 import Tenses from '../pages/Tenses';
+import { usePdfExam } from './context/PdfExamContext';
 
 type Theme = 'light' | 'dark';
 
@@ -49,6 +50,7 @@ const App: React.FC = () => {
   const [showWelcomeTour, setShowWelcomeTour] = useState(false);
 
   const [openAccordions, setOpenAccordions] = useState<string[]>([]);
+  const { examState } = usePdfExam();
   
   useEffect(() => {
     if (theme === 'dark') {
@@ -210,7 +212,7 @@ const App: React.FC = () => {
           case 'tenses':
               return <Tenses />;
           case 'history':
-              return <History />;
+              return <History onAskTutor={handleAskTutor} />;
           case 'admin':
                 return user === 'admin' ? <AdminPage /> : <Dashboard onNavigate={handleTabClick} />;
           default:
@@ -323,6 +325,15 @@ const App: React.FC = () => {
       </div>
     );
   };
+  const ReturnToExamButton: React.FC = () => (
+      <button
+          onClick={() => handleTabClick('pdf_importer')}
+          className="fixed bottom-6 right-6 z-50 bg-red-600 text-white font-bold py-3 px-6 rounded-full shadow-lg animate-pulse flex items-center gap-2"
+      >
+          <ExamIcon />
+          <span>Sınava Dön</span>
+      </button>
+  );
 
   return (
     <HistoryProvider>
