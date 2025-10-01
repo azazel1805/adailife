@@ -20,7 +20,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
     const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_MINUTES * 60);
     const [error, setError] = useState('');
     const [processingMessage, setProcessingMessage] = useState('');
-    
+
     const { addExamResult } = useExamHistory();
 
     const questionRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -48,7 +48,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
             if (!resultJson.questions || resultJson.questions.length === 0) {
                 throw new Error("PDF'den geçerli soru ayrıştırılamadı. Lütfen dosya formatını kontrol edin.");
             }
-            
+
             const sortedQuestions = resultJson.questions.sort((a: MockExamQuestion, b: MockExamQuestion) => a.questionNumber - b.questionNumber);
             setQuestions(sortedQuestions);
 
@@ -63,7 +63,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
             setImporterState('idle');
         }
     };
-    
+
     // Cleanup timer on component unmount
     useEffect(() => {
         return () => {
@@ -105,7 +105,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
             totalQuestions: questions.length,
             performanceByType,
         };
-        
+
         addExamResult(resultData);
         onExamFinish(resultData);
 
@@ -134,7 +134,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
     const handleAnswerChange = (questionNumber: number, answer: string) => {
         setUserAnswers(prev => ({ ...prev, [questionNumber]: answer }));
     };
-    
+
     const scrollToQuestion = (index: number) => {
         questionRefs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
@@ -155,7 +155,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
             setError('Lütfen sadece PDF formatında bir dosya yükleyin.');
         }
     };
-    
+
     if (importerState === 'idle') {
         return (
             <div className="max-w-3xl mx-auto text-center bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg">
@@ -163,7 +163,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
                 <p className="text-slate-500 dark:text-slate-400 mb-6">
                     Elinizdeki deneme sınavı PDF'lerini yükleyerek interaktif bir sınava dönüştürün. Yapay zeka, soruları ve cevap anahtarını sizin için otomatik olarak ayrıştıracaktır.
                 </p>
-                <div 
+                <div
                     className="mt-4 p-10 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-brand-primary hover:bg-gray-50 transition-colors"
                     onClick={() => fileInputRef.current?.click()}
                     onDragOver={(e) => e.preventDefault()}
@@ -196,7 +196,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
             </div>
         );
     }
-    
+
     // Quiz in Progress
     return (
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -204,11 +204,11 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
                 {questions.map((q, index) => {
                     const prevQuestion = index > 0 ? questions[index - 1] : null;
                     const showPassage = q.passage && q.passage !== prevQuestion?.passage;
-                    
+
                     return (
                         <div key={q.questionNumber} ref={el => { questionRefs.current[index] = el; }} className="mb-8 p-6 bg-white dark:bg-slate-900 rounded-lg shadow-lg scroll-mt-20">
                            {showPassage && (
-                                <div className="mb-6 bg-gray-100 p-4 rounded-md">
+                                <div className="mb-6 bg-gray-100 dark:bg-slate-800 p-4 rounded-md">
                                     <h4 className="font-semibold text-brand-primary mb-2">Okuma Parçası</h4>
                                     <p className="text-slate-500 dark:text-slate-400 whitespace-pre-wrap">{q.passage}</p>
                                 </div>
@@ -221,7 +221,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
                                 {q.options.map(opt => {
                                     const isSelected = userAnswers[q.questionNumber] === opt.key;
                                     return (
-                                        <label key={opt.key} className={`flex items-center p-3 rounded-md transition-all duration-200 border-2 ${isSelected ? 'border-brand-primary bg-brand-secondary/10' : 'border-transparent bg-gray-100 hover:bg-gray-200'} cursor-pointer`}>
+                                        <label key={opt.key} className={`flex items-center p-3 rounded-md transition-all duration-200 border-2 ${isSelected ? 'border-brand-primary bg-brand-secondary/10' : 'border-transparent bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700'} cursor-pointer`}>
                                             <input
                                                 type="radio"
                                                 name={`question-${q.questionNumber}`}
@@ -231,19 +231,36 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
                                                 className="w-4 h-4 text-brand-primary bg-gray-100 border-gray-300 focus:ring-brand-primary ring-offset-bg-secondary hidden"
                                             />
                                             <span className="font-bold mr-3 text-brand-primary">{opt.key})</span>
-                                            <span>{opt.value}</span>
+                                            <span className="dark:text-slate-300">{opt.value}</span>
                                         </label>
                                     );
                                 })}
                             </div>
+
+                            {/* --- ADDED THIS BLOCK --- */}
+                            <div className="mt-5 pt-4 border-t border-gray-200 dark:border-slate-700 text-right">
+                                <button
+                                    onClick={() => {
+                                        // Create a detailed context string for the tutor AI
+                                        const optionsText = q.options.map(opt => `${opt.key}) ${opt.value}`).join('\n');
+                                        const context = `Lütfen aşağıdaki soru hakkında yardımcı ol:\n\nSoru ${q.questionNumber}: ${q.questionText}\n\nSeçenekler:\n${optionsText}\n\nKullanıcının Seçtiği Cevap: ${userAnswers[q.questionNumber] || 'Henüz cevaplanmadı.'}`;
+                                        onAskTutor(context);
+                                    }}
+                                    className="text-sm font-semibold text-brand-primary hover:text-brand-accent transition-colors py-1 px-3 rounded-md hover:bg-brand-secondary/10"
+                                >
+                                    🎓 Bu Soruya Yardım İste
+                                </button>
+                            </div>
+                            {/* --- END OF ADDED BLOCK --- */}
+
                         </div>
                     )
                 })}
             </div>
-            
+
             <aside className="lg:col-span-1 order-1 lg:order-2 lg:sticky top-20 h-fit">
                 <div className="bg-white dark:bg-slate-900 p-4 rounded-lg shadow-lg">
-                    <div className="text-center border-b border-gray-200 pb-4 mb-4">
+                    <div className="text-center border-b border-gray-200 dark:border-slate-700 pb-4 mb-4">
                         <p className="text-sm text-slate-500 dark:text-slate-400">Kalan Süre</p>
                         <p className={`text-4xl font-bold ${timeLeft < 300 ? 'text-red-500 animate-pulse' : 'text-slate-900 dark:text-slate-200'}`}>{formatTime(timeLeft)}</p>
                     </div>
@@ -253,7 +270,7 @@ const PDFImporter: React.FC<PDFImporterProps> = ({ onExamFinish, onAskTutor }) =
                             <button
                                 key={q.questionNumber}
                                 onClick={() => scrollToQuestion(index)}
-                                className={`w-full aspect-square text-sm font-bold rounded-md transition-colors ${userAnswers[q.questionNumber] ? 'bg-brand-primary text-white' : 'bg-gray-100 hover:bg-gray-200 text-slate-500 dark:text-slate-400'}`}
+                                className={`w-full aspect-square text-sm font-bold rounded-md transition-colors ${userAnswers[q.questionNumber] ? 'bg-brand-primary text-white' : 'bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400'}`}
                             >
                                 {q.questionNumber}
                             </button>
