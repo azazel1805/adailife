@@ -338,6 +338,15 @@ const App: React.FC = () => {
       </div>
     );
   };
+  const ReturnToExamButton: React.FC = () => (
+      <button
+          onClick={() => handleTabClick('pdf_importer')}
+          className="fixed bottom-6 right-6 z-50 bg-red-600 text-white font-bold py-3 px-6 rounded-full shadow-lg animate-pulse flex items-center gap-2"
+      >
+          <ExamIcon />
+          <span>Sınava Dön</span>
+      </button>
+  );
 
   return (
     <HistoryProvider>
