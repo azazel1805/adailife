@@ -35,7 +35,7 @@ import PragmaticAnalysisTool from '../pages/PragmaticAnalysisTool';
 import VisualDictionary from '../pages/VisualDictionary';
 import Basics from '../pages/Basics';
 import Tenses from '../pages/Tenses';
-import { usePdfExam } from './context/PdfExamContext';
+import { usePdfExam } from '/context/PdfExamContext';
 
 type Theme = 'light' | 'dark';
 
