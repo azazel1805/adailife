@@ -1,16 +1,4 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200```
-
-**Bu kod ne anlama geliyor?**
-*   `from = "/*"`: Gelen bütün sayfa istekleri için...
-*   `to = "/index.html"`: Her zaman `index.html` dosyasını sun.
-*   `status = 200`: Bunu bir hata (404) olarak değil, başarılı bir işlem (200) olarak göster.
-
-**Adım 3: Değişiklikleri GitHub'a Gönderin**
-
-Bu yeni dosyayı projenize kaydedin, commit'leyin ve GitHub'a push'layın. Netlify bu değişikliği otomatik olarak algılayacak ve sitenizi yeniden deploy edecektir.
-
-Yeni deploy tamamlandıktan sonra, PWA'yı telefonunuzdan veya bilgisayarınızdan kaldırıp yeniden yükleyin. Artık uygulamayı her açtığınızda doğru şekilde başlayacaktır.
-
+  status = 200
