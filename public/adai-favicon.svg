@@ -2,7 +2,7 @@
   <!-- Black rounded background -->
   <rect width="100" height="100" rx="20" fill="black"/>
   
-  <!-- Definition for the glowing gradient for the "I" -->
+  <!-- Definition for the glowing gradient -->
   <defs>
     <radialGradient id="glow-gradient" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#e9d5ff" />
@@ -11,7 +11,7 @@
     </radialGradient>
   </defs>
   
-  <!-- The text "ADAI", centered, with a safer font size -->
+  <!-- The text "ADAI", perfectly centered and kerned -->
   <text x="50%" y="64%" 
         dominant-baseline="middle" 
         text-anchor="middle" 
@@ -22,8 +22,8 @@
     <!-- "ADA" part is solid white -->
     <tspan fill="#FFFFFF">ADA</tspan>
     
-    <!-- "I" part is filled with the glowing purple gradient -->
-    <tspan fill="url(#glow-gradient)">I</tspan>
+    <!-- "I" part is pulled closer to the "A" with the dx attribute -->
+    <tspan fill="url(#glow-gradient)" dx="-0.12em">I</tspan>
     
   </text>
 </svg>
