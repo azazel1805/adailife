@@ -23,7 +23,7 @@
     <tspan fill="#FFFFFF">ADA</tspan>
     
     <!-- "I" part is pulled closer to the "A" with the dx attribute -->
-    <tspan fill="url(#glow-gradient)" dx="-0.20em">I</tspan>
+    <tspan fill="url(#glow-gradient)" dx="-0.25em">I</tspan>
     
   </text>
 </svg>
