@@ -12,11 +12,11 @@
   </defs>
   
   <!-- The text "ADAI", perfectly centered and kerned -->
-  <text x="50%" y="64%" 
+  <text x="50%" y="50%" 
         dominant-baseline="middle" 
         text-anchor="middle" 
         font-family="sans-serif" 
-        font-size="40" 
+        font-size="35" 
         font-weight="bold">
           
     <!-- "ADA" part is solid white -->
