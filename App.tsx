@@ -116,7 +116,7 @@ const App: React.FC = () => {
     'planner': { id: 'planner', label: 'Akıllı Planlayıcı', icon: <PlannerIcon /> },
     'tutor': { id: 'tutor', label: 'AI Eğitmen', icon: <TutorIcon /> },
     'history': { id: 'history', label: 'Geçmiş', icon: <HistoryIcon /> },
-    'deconstruction': { id: 'deconstruction', label: 'Metin Analizi', icon: <DeconstructIcon /> },
+    'deconstruction': { id: 'deconstruction', label: 'Metin Parçalayıcı', icon: <DeconstructIcon /> },
     'diagrammer': { id: 'diagrammer', label: 'Cümle Görselleştirici', icon: <DiagramIcon /> },
     'cohesion_analyzer': { id: 'cohesion_analyzer', label: 'Paragraf Bağlantı Analisti', icon: <CohesionIcon /> },
     'sentence_ordering': { id: 'sentence_ordering', label: 'Cümle Sıralama', icon: <OrderingIcon /> },
