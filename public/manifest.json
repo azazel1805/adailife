@@ -1,7 +1,7 @@
 {
   "short_name": "ADAI",
   "name": "ADAI Language Assistant",
-  "description": "An AI-powered assistant for English learning and YDS exam preparation.",
+  "description": "An AI-powered assistant for English learning and exam preparation.",
   "icons": [
     {
       "src": "/adai-favicon.svg",
