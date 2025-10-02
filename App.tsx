@@ -39,7 +39,6 @@ import Basics from './pages/Basics';
 import Tenses from './pages/Tenses';
 import { usePdfExam } from './context/PdfExamContext';
 
-const ADAI_FAVICON = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSJibGFjayIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1IDIzKSI+PHBhdGggZD0iTTM0LjMsNDcuMUgxNS43TDAgMGgxMS4ybDkuNCwzMS40TDMwIDBoMTEuMkwzNC4zLDQ3LjF6IE00OS45LDQ3LjFWMGg4djQ3LjFINDkuOXoiIGZpbGw9InVybCgjZykiLz48L2c+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeDI9IjAiIHkxPSIwIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iI2E3OGJmYSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzdjM2FlZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg==";
 
 type Theme = 'light' | 'dark';
 
